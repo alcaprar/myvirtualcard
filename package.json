@@ -1,0 +1,36 @@
+{
+  "name": "myvirtualcard",
+  "version": "1.0.0",
+  "description": "My virtual card test app on heroku",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alessandrocaprarelli/myvirtualcard.git"
+  },
+  "keywords": [
+    "my",
+    "virtual",
+    "card",
+    "polimi"
+  ],
+  "author": "Alessandro Caprarelli, Federico Gatti, Giovanni Marino, Amro Abd Elgawwad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alessandrocaprarelli/myvirtualcard/issues"
+  },
+  "homepage": "https://github.com/alessandrocaprarelli/myvirtualcard#readme",
+  "engines": {
+    "node": "4.1.1"
+  },
+  "start": "node index.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1",
+    "swig": "^1.4.2"
+  }
+}
