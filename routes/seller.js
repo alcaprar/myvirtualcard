@@ -6,7 +6,7 @@ router.get('/seller-login', function (req, res) {
 });
 
 router.get('/seller-scan-qr', function (req, res) {
-    
+    res.render('seller-scan-qr');
 });
 
 module.exports = router;
