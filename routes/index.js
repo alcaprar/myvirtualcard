@@ -4,7 +4,7 @@ var router = express.Router();
 router.use(require('./seller'));
 
 router.get('/', function (req, res) {
-    res.render('index');
+    res.redirect('/seller-login');
 });
 
 module.exports = router;
