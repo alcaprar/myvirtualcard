@@ -48,12 +48,15 @@
                                 <input class="form-control" placeholder="E-mail" name="email" type="email" id="email-input" autofocus>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password" id="'password-input" value="">
+                                <input class="form-control" placeholder="Password" name="password" type="password" id="password-input" value="">
                             </div>
                             <div class="checkbox">
                                 <label>
                                     <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                 </label>
+                            </div>
+                            <div class="form-group" style="color: red" id="error-message">
+
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
                             <a id="login-button" class="btn btn-lg btn-success btn-block">Login</a>
@@ -78,19 +81,45 @@
 <script src="/js/sb-admin-2.min.js"></script>
 
 <script>
-    $('#login-button').on('click', function () {
-        var username = $('#email-input').val();
-        var password = $('#password-input').val();
+    function login() {
+        var usernameInput = $('#email-input');
+        var passwordInput = $('#password-input');
+        var username = usernameInput.val();
+        var password = passwordInput.val();
 
         var errorText = '';
-        if(username!=='admin@myvirtualcard.com'){
+        usernameInput.parent().removeClass('has-error');
+        passwordInput.parent().removeClass('has-error');
+        if(username!=='admin'){
             var errorText = 'Email not found. Please try again.';
+            usernameInput.parent().addClass('has-error');
+
         }else{
+            console.log(password);
             if(password!=='password'){
-                errorText = 'Email and password do not match. Please try again.';
+                errorText = 'Password wrong. Please try again.';
+                usernameInput.parent().removeClass('has-error');
+                passwordInput.parent().addClass('has-error');
             }else{
+                usernameInput.parent().removeClass('has-error');
+                passwordInput.parent().removeClass('has-error');
                 window.location = '/seller-home';
             }
+        }
+        $('#error-message').html(errorText);
+    }
+
+    $('#login-button').on('click', function () {
+        login();
+    });
+    $('#email-input').keypress(function (e) {
+        if(e && e.keyCode == 13) {
+            login();
+        }
+    });
+    $('#password-input').keypress(function (e) {
+        if(e && e.keyCode == 13) {
+            login();
         }
     })
 </script>
