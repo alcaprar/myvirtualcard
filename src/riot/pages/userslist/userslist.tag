@@ -60,7 +60,7 @@
                             var user = {
                                 name: value.name.first,
                                 surname: value.name.last,
-                                points: Math.floor((Math.random() * 10) + 1),
+                                points: Math.floor((Math.random() * 100) + 1),
                                 lastCheckIn: (Math.floor((Math.random() * 28) + 1)).toString() + '-' + (Math.floor((Math.random() * 12) + 1)).toString() + '-' + (Math.floor((Math.random() * 2) + 2015))
                             };
                             tag.users.push(user);
