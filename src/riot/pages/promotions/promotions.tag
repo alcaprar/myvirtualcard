@@ -14,11 +14,11 @@
                 </button>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding-top: 10px">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Kitchen Sink
+                        Promotions
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
@@ -44,8 +44,9 @@
                                     <td>{promotion.pointsNeeded}</td>
                                     <td>{promotion.startingDate}</td>
                                     <td>{promotion.stoppingDate}</td>
-                                    <td><input type="checkbox" checked="{promotion.active}"></td>
-                                    <td><a onclick="{editPromotion.bind(this, key)}" data-promotionid="{key}"><i class="fa fa-pencil" aria-hidden="true"></i></a> <i class="fa fa-trash" aria-hidden="true"></i></td>
+                                    <td><input type="checkbox" checked="{promotion.active}" disabled></td>
+                                    <td><a style="cursor: pointer;" onclick="{editPromotion.bind(this, key)}" data-promotionid="{key}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <a style="cursor: pointer" onclick="{deletePromotion.bind(this, key)}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -109,6 +110,7 @@
         tag.on('mount', onMount) ;
         tag.createPromotion = createPromotion;
         tag.editPromotion = editPromotion;
+        tag.deletePromotion = deletePromotion;
         tag.promotions = [
             {
                 key: 1,
@@ -191,6 +193,14 @@
                         .prop("checked", "")
                         .end();
             })
+        }
+
+        function deletePromotion(id) {
+            var r = confirm('Are you sure?');
+            if(r){
+                tag.promotions.splice(id, 1);
+                tag.update();
+            }
         }
 
 
