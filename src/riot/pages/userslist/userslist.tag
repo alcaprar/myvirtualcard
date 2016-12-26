@@ -53,12 +53,13 @@
         function onMount(){
             console.log('aaa');
             $.get(
-                    "http://uinames.com/api/?region=italy&amount=100",
+                    "https://randomuser.me/api/?inc=name&results=100",
                     function (data) {
-                        $.each(data, function (key, value) {
+                        console.log(data);
+                        $.each(data.results, function (key, value) {
                             var user = {
-                                name: value.name,
-                                surname: value.surname,
+                                name: value.name.first,
+                                surname: value.name.last,
                                 points: Math.floor((Math.random() * 10) + 1),
                                 lastCheckIn: (Math.floor((Math.random() * 28) + 1)).toString() + '-' + (Math.floor((Math.random() * 12) + 1)).toString() + '-' + (Math.floor((Math.random() * 2) + 2015))
                             };
