@@ -17,13 +17,16 @@
                     <a onclick="riot.route('', 'Dashboard')" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a onclick="riot.route('users-list', 'Users list')" ><i class="fa fa-dashboard fa-fw"></i> Users list</a>
+                    <a onclick="riot.route('users-list', 'Users list')" ><i class="fa fa-users fa-fw"></i> Users list</a>
                 </li>
                 <li>
-                    <a onclick="riot.route('promotions', 'Promotions management')"><i class="fa fa-dashboard fa-fw"></i> Promotions management</a>
+                    <a onclick="riot.route('promotions', 'Promotions management')"><i class="fa fa-ticket fa-fw"></i> Promotions management</a>
                 </li>
                 <li>
-                    <a onclick="riot.route('statistics', 'Statistics')"><i class="fa fa-dashboard fa-fw"></i> Statistics</a>
+                    <a onclick="riot.route('advertisement', 'Advertisement')"><i class="fa fa-bullhorn fa-fw"></i> Advertisement</a>
+                </li>
+                <li>
+                    <a onclick="riot.route('statistics', 'Statistics')"><i class="fa fa-line-chart fa-fw"></i> Statistics</a>
                 </li>
             </ul>
         </div>

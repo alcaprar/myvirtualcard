@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="" onclick="riot.route('', 'Dashboard')">MyVirtualCard</a>
+        <a class="navbar-brand" href="/seller-app">MyVirtualCard</a>
     </div>
     <!-- /.navbar-header -->
 

@@ -10,6 +10,7 @@
         <userslist riotid="users-list"></userslist>
         <promotions riotid="promotions"></promotions>
         <statistics riotid="statistics"></statistics>
+        <advertisement riotid="advertisement"></advertisement>
 
     </div>
     <!-- /#wrapper -->
