@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var Seller = require('../models/seller');
+var Customer = require('../models/customer');
+
+router.post('/sellers', function (req, res) {
+    var seller = new Seller(req.body);
+    seller.save(function () {
+        res.send(req.body);
+    });
+});
 
 router.get('/sellers', function (req, res) {
     //GET list of sellers
@@ -14,12 +22,23 @@ router.get('/sellers/:sellerId', function (req, res) {
     //GET seller info
 });
 
-router.post('/sellers/:sellerId/scan-user/:userId/points/:points', function (req, res) {
-    //ADD points to user
+router.post('/sellers/:seller/customers/:customer/points/:points', function (req, res) {
+    var seller = req.params.seller;
+    var customer = req.params.customer;
+    var points = req.params.points;
+    Customer.incrementPoints(customer, seller, points, function () {
+        res.send('ok')
+    })
 });
 
-router.post('/sellers/:sellerId/scan-coupon/:couponId/:userId', function (req, res) {
-    //REMOVE a coupon from a user
+router.post('/sellers/:seller/customers/:customer/promotions/:promotionName', function (req, res) {
+    var seller = req.params.seller;
+    var customer = req.params.customer;
+    var promotionName = req.params.promotionName;
+
+    Customer.useCoupon(customer, seller, promotionName, function () {
+        res.send('ok')
+    })
 });
 
 

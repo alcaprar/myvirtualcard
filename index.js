@@ -8,7 +8,7 @@ var port = process.env.PORT || 8080;
 
 //config file
 var config = require('./config');
-console.log(config);
+
 //mongodb connection
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;

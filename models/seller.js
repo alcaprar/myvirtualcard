@@ -8,7 +8,7 @@ var sellerSchema = new Schema({
     promotions: [
         {
             name: {type: String},
-            pointsNeeded: {type: Number}
+            points: {type: Number}
         }
     ]
 });
@@ -16,12 +16,13 @@ var sellerSchema = new Schema({
 sellerSchema.statics.select = function (callback) {
     return this.find(
         {},
-        function (err, users) {
+        function (err, sellers) {
             if(err) throw err;
-            callback(users);
+            callback(sellers);
         }
     );
 };
+
 
 var Seller = mongoose.model('Seller', sellerSchema);
 
