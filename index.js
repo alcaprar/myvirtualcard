@@ -6,6 +6,18 @@ var app = express();
 
 var port = process.env.PORT || 8080;
 
+//config file
+var config = require('./config');
+console.log(config);
+//mongodb connection
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+mongoose.connect(config.mongodb.uri, function (err) {
+    if (err){
+        console.log('Error while connecting to mongodb.', err)
+    }
+});
+
 app.engine('html', swig.renderFile);
 global.rootPath = __dirname;
 app.set('view engine', 'html');
