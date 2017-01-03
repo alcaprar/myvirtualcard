@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var Seller = require('../models/seller');
 
 router.get('/sellers', function (req, res) {
     //GET list of sellers
+    Seller.select(function (users) {
+        res.send(users);
+    })
+    
 });
 
 router.get('/sellers/:sellerId', function (req, res) {
