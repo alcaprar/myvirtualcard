@@ -6,7 +6,19 @@ Group composition:
 - Giovanni Marino
 - Amro Abd Elgawwad 
 
+REST API url: myvirtualcard.herokuapp.com
+
 ## API documentation
+
+### Generic use
+
+#### GET /reset-db
+To delete all the collections and documents.
+After that the db is completely cleaned.
+
+#### GET /populate-db
+**+++Coming soon+++**
+To populate the db with the data stored in a JSON internally.
 
 ### Seller
 
@@ -15,11 +27,11 @@ Get a list of all the sellers.
 
 #### POST /sellers
 Insert a new seller passing a JSON.
-**N.B. use name without spaces. We use name as ID.**
 Use this JSON as example:
 ```
 {
-    "name": "Supermercato"
+    "username": "supermercato1" //it's a readable ID
+    "name": "Supermercato sotto casa"
     "logo": "/img/logo1.png",
     "promotions": [
         {
@@ -34,11 +46,11 @@ Use this JSON as example:
 }
 ```
 
-#### POST /sellers/:sellerName/customers/:customerUsername/points/:points
+#### POST /sellers/:sellerUsername/customers/:customerUsername/points/:points
 Use this to add points to a customer in a store. (When scanning a qr code of a user)
-Example: `POST /sellers/Supermercato/customers/alecapra/points/10`
+Example: `POST /sellers/supermercato1/customers/alecapra/points/10`
 
-#### POST /sellers/:sellerName/customers/:customerUsername/:promotionName
+#### POST /sellers/:sellerUsername/customers/:customerUsername/:promotionName
 Use this to remove a coupon to a customer in a store. (When scanning a qr code of a coupon)
 Example: `/sellers/test/customers/alecapra/promotions/Coffe`
 
@@ -87,6 +99,6 @@ You get a JSON object like this:
 Remove a customer.
 Example: `DELETE /customers/alecapra`
 
-#### POST /customers/:customerUsername/sellers/:sellerName/promotions/:promotionName/:promotionPoints
+#### POST /customers/:customerUsername/sellers/:sellerUsername/promotions/:promotionName/:promotionPoints
 To activate a promotion in a store and generate a coupon, decrementing point.
-Example: `/customers/alecapra/sellers/Supermercato/promotions/Coffe/10`
+Example: `/customers/alecapra/sellers/supermercato1/promotions/Coffe/10`

@@ -11,6 +11,7 @@ router.post('/sellers', function (req, res) {
 });
 
 router.get('/sellers', function (req, res) {
+    console.log('/sellers');
     //GET list of sellers
     Seller.select(function (users) {
         res.send(users);
@@ -18,8 +19,15 @@ router.get('/sellers', function (req, res) {
     
 });
 
-router.get('/sellers/:sellerId', function (req, res) {
-    //GET seller info
+router.get('/sellers/:sellerUsername', function (req, res) {
+    var username = req.params.sellerUsername;
+    Seller.findOne(
+        {username: username},
+        function (err, seller) {
+            if(err) throw err;
+            res.send(JSON.stringify(seller));
+        }
+    )
 });
 
 router.post('/sellers/:seller/customers/:customer/points/:points', function (req, res) {

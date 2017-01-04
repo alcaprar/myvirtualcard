@@ -8,6 +8,10 @@ router.get('/customers', function (req, res) {
     })
 });
 
+router.get('/customers/:customer/sellers/:seller', function (req, res) {
+    //GET all the info of the customer in this store
+});
+
 router.post('/customers', function (req, res) {
     var customer = new Customer(req.body);
     customer.save(function () {

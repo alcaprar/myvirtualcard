@@ -8,7 +8,7 @@ var customerSchema = new Schema({
     surname: {type: String},
     stores: [
         {
-            name: {type: String},
+            username: {type: String},
             points: {type: Number},
             discounts: [
                 {
@@ -31,10 +31,10 @@ customerSchema.statics.select = function (callback) {
     );
 };
 
-function storeExists(storeName, storesList) {
+function storeExists(storeUsername, storesList) {
     var i;
     for (i = 0; i < storesList.length; i++) {
-        if (storesList[i].name === storeName) {
+        if (storesList[i].username === storeUsername) {
             return i;
         }
     }
@@ -54,14 +54,12 @@ function discountExists(discountName, discountsList) {
 }
 
 
-customerSchema.statics.incrementPoints = function (customerName, sellerName, points, callback) {
-    console.log(customerName);
+customerSchema.statics.incrementPoints = function (customerUsername, sellerUsername, points, callback) {
     return this.findOne(
-        {username: customerName},
+        {username: customerUsername},
         function (err, customer) {
             if (err) throw err;
-            console.log(JSON.stringify(customer));
-            var index = storeExists(sellerName, customer.stores);
+            var index = storeExists(sellerUsername, customer.stores);
             if(index>-1){
                 customer.stores[index].points = Number(customer.stores[index].points) + Number(points)
             }else{
@@ -78,14 +76,14 @@ customerSchema.statics.incrementPoints = function (customerName, sellerName, poi
     )
 };
 
-customerSchema.statics.activatePromotion = function (customer, seller, promotionName, promotionPoints, callback) {
+customerSchema.statics.activatePromotion = function (customerUsername, sellerUsername, promotionName, promotionPoints, callback) {
     return this.findOne(
-        {username: customer},
+        {username: customerUsername},
         function (err, customer) {
             if(err) throw err;
-            var storeIndex = storeExists(seller, customer.stores);
+            var storeIndex = storeExists(sellerUsername, customer.stores);
             customer.stores[storeIndex].points = Number(customer.stores[storeIndex].points) - promotionPoints;
-            var discountIndex = discountExists(promotionName, customer.stores[storeIndex].discounts)
+            var discountIndex = discountExists(promotionName, customer.stores[storeIndex].discounts);
             if(discountIndex>-1){
                 customer.stores[storeIndex].discounts[discountIndex].quantity = Number(customer.stores[storeIndex].discounts[discountIndex].quantity) + 1;
             }else{
@@ -102,12 +100,12 @@ customerSchema.statics.activatePromotion = function (customer, seller, promotion
     )
 };
 
-customerSchema.statics.useCoupon = function (customer, seller, promotionName, callback) {
+customerSchema.statics.useCoupon = function (customerUsername, sellerUsername, promotionName, callback) {
     return this.findOne(
-        {username: customer},
+        {username: customerUsername},
         function (err, customer) {
             if(err) throw err;
-            var storeIndex = storeExists(seller, customer.stores);
+            var storeIndex = storeExists(sellerUsername, customer.stores);
             var discountIndex = discountExists(promotionName, customer.stores[storeIndex].discounts);
             customer.stores[storeIndex].discounts[discountIndex].quantity = Number(customer.stores[storeIndex].discounts[discountIndex].quantity) -1;
             if(customer.stores[storeIndex].discounts[discountIndex].quantity===0){

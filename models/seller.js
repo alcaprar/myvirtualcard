@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var sellerSchema = new Schema({
-    name: {type: String, index:true},
+    username: {type: String, index: true},
+    name: {type: String},
     logo: {type: String},
     promotions: [
         {
