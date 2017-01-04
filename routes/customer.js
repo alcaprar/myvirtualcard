@@ -13,6 +13,7 @@ router.get('/customers/:customer/sellers/:seller', function (req, res) {
 });
 
 router.post('/customers', function (req, res) {
+    console.log('customers post ', req.body);
     var customer = new Customer(req.body);
     customer.save(function () {
         res.send(req.body);

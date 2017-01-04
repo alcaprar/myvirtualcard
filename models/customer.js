@@ -64,7 +64,7 @@ customerSchema.statics.incrementPoints = function (customerUsername, sellerUsern
                 customer.stores[index].points = Number(customer.stores[index].points) + Number(points)
             }else{
                 customer.stores.push({
-                    "name": sellerName,
+                    "username": sellerUsername,
                     "points": points
                 })
             }

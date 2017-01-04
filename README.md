@@ -12,13 +12,13 @@ REST API url: myvirtualcard.herokuapp.com
 
 ### Generic use
 
-#### GET /reset-db
+#### GET /drop-db
 To delete all the collections and documents.
 After that the db is completely cleaned.
 
-#### GET /populate-db
+#### GET /reset-db
 **+++Coming soon+++**
-To populate the db with the data stored in a JSON internally.
+To reset the db to the initial state.
 
 ### Seller
 
@@ -81,7 +81,7 @@ You get a JSON object like this:
         surname: {type: String},
         stores: [
             {
-                name: {type: String},
+                username: {type: String},
                 points: {type: Number},
                 discounts: [
                     {
