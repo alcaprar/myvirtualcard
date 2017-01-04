@@ -17,7 +17,6 @@ To delete all the collections and documents.
 After that the db is completely cleaned.
 
 #### GET /reset-db
-**+++Coming soon+++**
 To reset the db to the initial state.
 
 ### Seller
