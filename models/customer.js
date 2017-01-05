@@ -10,7 +10,7 @@ var customerSchema = new Schema({
         {
             username: {type: String},
             points: {type: Number},
-            discounts: [
+            coupons: [
                 {
                     //it's promotions.name in seller model
                     name: {type: String},
@@ -42,10 +42,10 @@ function storeExists(storeUsername, storesList) {
     return -1;
 }
 
-function discountExists(discountName, discountsList) {
+function couponExists(couponName, couponsList) {
     var i;
-    for (i = 0; i < discountsList.length; i++) {
-        if (discountsList[i].name === discountName) {
+    for (i = 0; i < couponsList.length; i++) {
+        if (couponsList[i].name === couponName) {
             return i;
         }
     }
@@ -83,11 +83,11 @@ customerSchema.statics.activatePromotion = function (customerUsername, sellerUse
             if(err) throw err;
             var storeIndex = storeExists(sellerUsername, customer.stores);
             customer.stores[storeIndex].points = Number(customer.stores[storeIndex].points) - promotionPoints;
-            var discountIndex = discountExists(promotionName, customer.stores[storeIndex].discounts);
-            if(discountIndex>-1){
-                customer.stores[storeIndex].discounts[discountIndex].quantity = Number(customer.stores[storeIndex].discounts[discountIndex].quantity) + 1;
+            var couponIndex = couponExists(promotionName, customer.stores[storeIndex].coupons);
+            if(couponIndex>-1){
+                customer.stores[storeIndex].coupons[couponIndex].quantity = Number(customer.stores[storeIndex].coupons[couponIndex].quantity) + 1;
             }else{
-                customer.stores[storeIndex].discounts.push({
+                customer.stores[storeIndex].coupons.push({
                     "name": promotionName,
                     "quantity": 1
                 })
@@ -106,10 +106,10 @@ customerSchema.statics.useCoupon = function (customerUsername, sellerUsername, p
         function (err, customer) {
             if(err) throw err;
             var storeIndex = storeExists(sellerUsername, customer.stores);
-            var discountIndex = discountExists(promotionName, customer.stores[storeIndex].discounts);
-            customer.stores[storeIndex].discounts[discountIndex].quantity = Number(customer.stores[storeIndex].discounts[discountIndex].quantity) -1;
-            if(customer.stores[storeIndex].discounts[discountIndex].quantity===0){
-                customer.stores[storeIndex].discounts.splice(discountIndex,1)
+            var couponIndex = couponExists(promotionName, customer.stores[storeIndex].coupons);
+            customer.stores[storeIndex].coupons[couponIndex].quantity = Number(customer.stores[storeIndex].coupons[couponIndex].quantity) -1;
+            if(customer.stores[storeIndex].coupons[couponIndex].quantity===0){
+                customer.stores[storeIndex].coupons.splice(couponIndex,1)
             }
             customer.save(function (err) {
                 if(err)throw err;
