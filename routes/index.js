@@ -20,49 +20,21 @@ router.get('/drop-db', function (req, res) {
 
 router.get('/reset-db', function (req, res) {
     mongoose.connection.dropDatabase(function () {
-        var customer = new Customer({
-            username: "alecapra",
-            name: "Alessandro",
-            surname: "Caprarelli"
-        });
-        customer.save(function () {
-            Customer.incrementPoints('alecapra', 'birrificiolambrate', 100, function () {
-                Customer.activatePromotion('alecapra', 'birrificiolambrate', 'Coffe', 10, function () {
-                    
-                })
+        var customerjson = require('../models/customerdata.json');
+        for(var i=0; i<customerjson.length; i++){
+            var cust = new Customer(customerjson[i]);
+            cust.save(function (err) {
+                console.log(err)
             });
-        });
-
-        var customer2 = new Customer({
-            username: "giovimarino",
-            name: "Giovanni",
-            surname: "Marino"
-        });
-        customer2.save(function () {
-            Customer.incrementPoints('giovimarino', 'birrificiolambrate', 50, function () {
-                Customer.activatePromotion('giovimarino', 'birrificiolambrate', 'Lunch', 50, function () {
-
-                })
-            });
-        });
-
-        var seller = new Seller({
-            username: 'birrificiolambrate',
-            name: 'Birrificio Lambrate',
-            logo: 'img/birrificiolamb.png',
-            promotions: [
-                {
-                    name: 'Coffe',
-                    points: 10
-                },
-                {
-                    name: 'Lunch',
-                    points: 50
-                }
-            ]
-        });
-        seller.save();
-
+        }
+        
+        var sellerjson = require('../models/sellerdata.json');
+        for(var j=0; j<sellerjson.length; j++){
+            var sell = new Seller(sellerjson[j]);
+            sell.save(function (err) {
+                console.log(err);
+            })
+        }
         res.send('ok');
     });
 });
