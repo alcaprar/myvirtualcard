@@ -1,6 +1,7 @@
 var express = require('express'),
     swig = require('swig'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    cors = require('cors');
 
 var app = express();
 
@@ -29,6 +30,8 @@ app.use('/data', express.static(__dirname + '/data'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cors());
 
 
 app.use(require('./routes'));
