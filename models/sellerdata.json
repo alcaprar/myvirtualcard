@@ -87,5 +87,61 @@
         "points": 36
       }
     ]
+  },
+  {
+    "name" : "Birrificio Lambrate Golgi",
+    "username": "birrificiolambrate",
+    "logo": "/img/birrificiolamb.png",
+    "coordinates": "45.479608, 9.234949",
+    "promotions": [
+      {
+        "name": "Sant ambreus",
+        "points": 100
+      },
+      {
+        "name": "Fries",
+        "points": 50
+      },
+      {
+        "name": "10 € discount lunch",
+        "points": 500
+      }
+    ]
+  },
+  {
+    "name": "Tecno-copy SRL",
+    "username": "tecnocopy",
+    "logo": "/img/tecnocopy.png",
+    "coordinates": "45.479514, 9.234588",
+    "promotions": [
+      {
+        "name": "100 pages",
+        "points": 100
+      },
+      {
+        "name": "100 pages and bookbinding",
+        "points": 130
+      }
+    ]
+  },
+  {
+    "name": "MyChef Polimi",
+    "username": "mychef",
+    "logo": "/img/mychef.png",
+    "coordinates": "45.478795, 9.227900",
+    "promotions": [
+      {
+        "name": "Coffe",
+        "points": 10
+      },
+      {
+        "name": "Brioche",
+        "points": 10
+      },
+      {
+        "name": "Juice",
+        "points": 30
+      }
+    ]
   }
 ]
