@@ -446,5 +446,50 @@
         ]
       }
     ]
+  },
+  {
+    "username": "giovimarino",
+    "name": "Giovanni",
+    "surname": "Marino",
+    "stores": [
+      {
+        "username": "birrificiolambrate",
+        "points": 600,
+        "coupons": [
+          {
+            "name": "Sant ambreus",
+            "quantity": 2
+          },
+          {
+            "name": "Chips",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "username": "tecnocopy",
+        "points": 20,
+        "coupons": [
+          {
+            "name": "100 pages",
+            "quantity": 1
+          }
+        ]
+      },
+      {
+        "username": "mychef",
+        "points": 0,
+        "coupons": [
+
+        ]
+      },
+      {
+        "username": "polishop",
+        "points": 100,
+        "coupons": [
+
+        ]
+      }
+    ]
   }
 ]

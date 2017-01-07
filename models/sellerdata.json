@@ -91,7 +91,7 @@
   {
     "name" : "Birrificio Lambrate Golgi",
     "username": "birrificiolambrate",
-    "logo": "/img/birrificiolamb.png",
+    "logo": "/img/birrificiolambrate.png",
     "coordinates": "45.479608, 9.234949",
     "promotions": [
       {
@@ -99,7 +99,7 @@
         "points": 100
       },
       {
-        "name": "Fries",
+        "name": "Chips",
         "points": 50
       },
       {
@@ -127,7 +127,7 @@
   {
     "name": "MyChef Polimi",
     "username": "mychef",
-    "logo": "/img/mychef.png",
+    "logo": "/img/mychef.jpg",
     "coordinates": "45.478795, 9.227900",
     "promotions": [
       {
@@ -141,6 +141,22 @@
       {
         "name": "Juice",
         "points": 30
+      }
+    ]
+  },
+  {
+    "name": "PoliShop",
+    "username": "polishop",
+    "logo": "/img/polishop.jpg",
+    "coordinates": "45.479464, 9.227332",
+    "promotions": [
+      {
+        "name": "Pen",
+        "points": 10
+      },
+      {
+        "name": "T-shirt",
+        "points": 100
       }
     ]
   }
