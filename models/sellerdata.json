@@ -22,7 +22,7 @@
   {
     "name": "Tecno-copy SRL",
     "username": "tecnocopy",
-    "logo": "/img/tecnocopy.png",
+    "logo": "img/tecnocopy.png",
     "coordinates": "45.479514, 9.234588",
     "promotions": [
       {
@@ -38,7 +38,7 @@
   {
     "name": "MyChef Polimi",
     "username": "mychef",
-    "logo": "/img/mychef.jpg",
+    "logo": "img/mychef.jpg",
     "coordinates": "45.478795, 9.227900",
     "promotions": [
       {
@@ -58,7 +58,7 @@
   {
     "name": "PoliShop",
     "username": "polishop",
-    "logo": "/img/polishop.jpg",
+    "logo": "img/polishop.jpg",
     "coordinates": "45.479464, 9.227332",
     "promotions": [
       {
