@@ -16,8 +16,28 @@ router.get('/sellers', function (req, res) {
     Seller.select(function (users) {
         res.send(users);
     })
-    
 });
+
+router.put('/sellers/:sellerUsername', function (req, res) {
+    var username = req.params.sellerUsername;
+    var promotion = req.body;
+    delete promotion.nrUsage;
+    delete promotion.active;
+    delete promotion.startingDate;
+    delete promotion.stoppingDate;
+    console.log(promotion);
+    Seller.findOneAndUpdate(
+        {username: username},
+        {$push: {"promotions": promotion}},
+        function (err, seller) {
+            console.log('aaa');
+        }
+    )
+});
+
+router.delete('/sellers/:sellerUsername', function (req, res) {
+    
+})
 
 router.get('/sellers/:sellerUsername', function (req, res) {
     var username = req.params.sellerUsername;

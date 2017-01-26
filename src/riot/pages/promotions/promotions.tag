@@ -41,12 +41,12 @@
                                     <td>{key+1}</td>
                                     <td>{promotion.name}</td>
                                     <td>{promotion.nrUsage}</td>
-                                    <td>{promotion.pointsNeeded}</td>
+                                    <td>{promotion.points}</td>
                                     <td>{promotion.startingDate}</td>
                                     <td>{promotion.stoppingDate}</td>
-                                    <td><input type="checkbox" checked="{promotion.active}" disabled></td>
-                                    <td><a style="cursor: pointer;" onclick="{editPromotion.bind(this, key)}" data-promotionid="{key}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                        <a style="cursor: pointer" onclick="{deletePromotion.bind(this, key)}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                    <td><input type="checkbox" checked="true" disabled></td>
+                                    <td><a style="cursor: pointer;" onclick="{editPromotion.bind(this, {key})}" data-promotionid="{key}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <a style="cursor: pointer" onclick="{deletePromotion.bind(this, {key})}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -154,7 +154,7 @@
                 var promotion ={
                     name: promotionName,
                     nrUsage: 0,
-                    pointsNeeded: promotionPoints,
+                    points: promotionPoints,
                     startingDate: $('#promotionStartingDate').val(),
                     stoppingDate: $('#promotionStoppingDate').val(),
                     active: $('#promotionActive').is(':checked')
@@ -166,6 +166,14 @@
                     tag.promotions[parseInt(promotionId)] = promotion
                 }else{
                     tag.promotions.push(promotion);
+                    $.ajax({
+                        url: "/sellers/birrificiolambrate",
+                        type: 'PUT',
+                        data: promotion,
+                        success: function(data){
+                            console.log(data);
+                        }
+                    });
                 }
                 $('#promotionId').val('');
                 tag.update();
@@ -176,7 +184,7 @@
         function editPromotion(id) {
             $('#promotionId').val(id);
             $('#promotionName').val(tag.promotions[id].name);
-            $('#promotionPoints').val(tag.promotions[id].pointsNeeded);
+            $('#promotionPoints').val(tag.promotions[id].points);
             $('#promotionStartingDate').val(tag.promotions[id].startingDate);
             $('#promotionStoppingDate').val(tag.promotions[id].stoppingDate);
             $('#promotionActive').prop('checked', tag.promotions[id].active);
@@ -192,7 +200,15 @@
                         .find("input[type=checkbox], input[type=radio]")
                         .prop("checked", "")
                         .end();
-            })
+            });
+            $.ajax({
+                url: "/sellers/birrificiolambrate",
+                context: document.body,
+                success: function(seller){
+                    tag.promotions = JSON.parse(seller).promotions;
+                    tag.update();
+                }
+            });
         }
 
         function deletePromotion(id) {
