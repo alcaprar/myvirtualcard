@@ -98,7 +98,8 @@ riot.tag2('promotions', '<div class="page-wrapper" id="{opts.riotid}" style="dis
                 context: document.body,
                 success: function(seller){
                     tag.promotions = JSON.parse(seller).promotions;
-                    tag.update();
+                    promotions = tag.promotions;
+                    riot.update();
                 }
             });
         }

@@ -206,7 +206,8 @@
                 context: document.body,
                 success: function(seller){
                     tag.promotions = JSON.parse(seller).promotions;
-                    tag.update();
+                    promotions = tag.promotions;
+                    riot.update();
                 }
             });
         }

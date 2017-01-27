@@ -38,7 +38,7 @@
                                 <i class="fa fa-ticket fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">2</div>
+                                <div class="huge">{promotions.length}</div>
                                 <div>Active promotions.</div>
                             </div>
                         </div>
